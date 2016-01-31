@@ -1,4 +1,4 @@
  Allow "blurry edges" for the aperture - i.e. some of the star's photons may be hitting outside the aperture, so give those neighboring pixels SOME weight.
  Use a Bayesian approach to finding the probability / weight of the pixels on the blurry edge.
  re-write the "Dynamic Writeup.pdf" file to correct for the <1/x> \neq 1/<x> issue.
- Explain why I'm using this todo and not using Issues.
+#Explain why I'm using this todo and not using Issues.
