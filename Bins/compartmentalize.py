@@ -61,7 +61,7 @@ def compartmentalize(lightcurve,
     """
     l = len(lightcurve)
     max_length = min(max_length, l)
-    f = open("xis.txt")
+    f = open("./xis.txt")
     lines = f.readlines()
     f.close()
     barmap = [None, None]
