@@ -2,5 +2,6 @@
  Use a Bayesian approach to finding the probability / weight of the pixels on the blurry edge.
  re-write the "Dynamic Writeup.pdf" file to correct for the <1/x> \neq 1/<x> problem.
  Write a program to generate simulated data.
- Figure out what on earth is wrong with the no xis.txt error message when running simulator.py.
+%Figure out what on earth is wrong with the no xis.txt error message when running simulator.py. (SOLUTION changed file structure)
+#Put everything in one folder for now.
 #Explain why I'm using this todo and not using Issues.
