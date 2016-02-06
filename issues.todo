@@ -9,6 +9,7 @@
  Write up a classification algorithm pdf.
  Write up a .pdf explaining how to take a stream of data and analyze it for genuine dips (as opposed to occasional coincidences)
 #Make a directory for all the documents called "Algorithms".
+ Look up yield for streaming purposes.
  Get rid of magic numbers in gen_nox.
  Give all the functions doc strings.
 #Have compartmentalize return the bars.
