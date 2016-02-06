@@ -24,8 +24,19 @@ def comp_to_slices(compartmentalization):
     
 
 def gen_nox():
-    dat = np.random.poisson(900 * np.random.random() + 100,(5,1000)) #Note: to be made slightly more "wavy" with extra product.
-    return [comp_to_slices(compartmentalize(dat[i])[0]) for i in range(5)]
+    overall_lambda = 200 * np.random.random() + 400
+    data = [[], [], [], [], []]
+    for i in range(1000):
+        overall = np.random.poisson(overall_lambda)
+        for o in range(5):
+            extra = np.random.poisson(500)
+#            changing 
+            data[o].append(extra)
+    #dat = [np.random.poisson(900 * np.random.random() + 100,1000) * (1 + 0.1 * sin(random for i in range(5)] #Note: to be made slightly more "wavy" with extra product.
+    return data
 
 if __name__=="__main__":
-    print gen_nox()
+    data = gen_nox()
+    for o in range(5):
+        plot(data[o])
+    show()
