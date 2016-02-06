@@ -1,0 +1,1 @@
+There are to be separate folders in this directory containing the LaTeX code & other LaTeX stuff for each algorithmic idea (see issues.todo suggestions)
