@@ -9,7 +9,7 @@ import numpy as np
 def gen_nox():
     dat = np.random.poisson(900 * np.random.random() + 100,1000) #Note: to be made slightly more "wavy" with extra product.
     comp = compartmentalize(dat)[0]
-    
+    #Working on compartmentalize so that it returns bars, not just splitting positions.
     plot(dat)
     show()
 
