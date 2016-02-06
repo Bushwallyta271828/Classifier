@@ -7,7 +7,7 @@
  Write .pdf about how to simulate bars directly, not simulate data then find bars.
  Write up a classification algorithm pdf.
  Write up a .pdf explaining how to take a stream of data and analyze it for genuine dips (as opposed to occasional coincidences)
- Make a directory for all the documents called "Algorithms" and re-write README to reference that directory's version of Dynamic Writeup.
+#Make a directory for all the documents called "Algorithms".
  Get rid of magic numbers in gen_nox.
  Give all the functions doc strings.
  Think about having compartmentalize return the bars.
