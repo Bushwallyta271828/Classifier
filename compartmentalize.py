@@ -18,11 +18,14 @@ def compartmentalize(lightcurve,
     Given a lightcurve, the maximum number of frames that can be put in a bin,
     and the maximum fraction of the time a measurement may lie
     outside the error bars, this function returns a tuple containing:
-        1.) A list of the optimal breaking points.
+        1.) A list of the optimal breaking points, with the minimum and 
+            maximum value in each bin pre-computed.
             In other words, if the first item in the returned tuple reads
-            [a, b, c, ..., z], then the best bins to use are [a, b), [b, c),
+            [(a, amin, amax), (b, bmin, bmax), (c, cmin, cmax), ..., (z, zmin, zmax)],
+            then the best bins to use are [a, b), [b, c),
             ..., [y, z), where "z" must be the length of the lightcurve, and "a"
-            must be the starting position given (the keyword "x")
+            must be the starting position (i.e. zero). Furthermore, in the interval [a, b),
+            for example, all the data is between amin and amax.
         2.) The total badness of this combination. The badness of a collection
             of bins is defined to be the sum of the badnesses of each bin.
             I define the goal of this program to be maximizing the information
@@ -72,23 +75,24 @@ def compartmentalize(lightcurve,
     while max_length > len(barmap) - 1:
         barmap.append(barmap[-1] + slope)
     min_size = max(2, int(2 / max_pval))
-    memovalues = [None]*l + [([l], 0)]
+    memovalues = [None]*l + [([(l, -1, -1)], 0)]
     memovalues[l - min_size + 1:-1] = [([], float("inf"))]*(min_size - 1)
     i = l - min_size
     while i >= 0:
         minimum = min(lightcurve[i:i + min_size])
         maximum = max(lightcurve[i:i + min_size])
         best_badness = float("inf")
-        best_partitioning = []
+        best_bin = (i, -1, -1)
+        best_break = -1
         for j in range(i + min_size, min(l + 1, i + max_length + 1)):
             new_badness = (maximum - minimum) * barmap[j - i]
-            found_partitioning, found_badness = memovalues[j]
+            found_badness = memovalues[j][1]
             if new_badness + found_badness < best_badness:
                 best_badness = new_badness + found_badness
-                best_partitioning = [i] + found_partitioning
+                best_bin = (i, minimum, maximum)
+                best_break = j
             if j < l and lightcurve[j] > maximum: maximum = lightcurve[j]
             elif j < l and lightcurve[j] < minimum: minimum = lightcurve[j]
-        memovalues[i] = (best_partitioning, best_badness)
+        memovalues[i] = ([best_bin] + memovalues[best_break][0], best_badness)
         i -= 1
     return memovalues[0]
-

@@ -1,3 +1,4 @@
+ Do whatever is on the NOTE.todo in Algorithms.
  Allow "blurry edges" for the aperture - i.e. some of the star's photons may be hitting outside the aperture, so give those neighboring pixels SOME weight.
  Write a pdf about how to do the above blurry edges.
  Use a Bayesian approach to finding the probability / weight of the pixels on the blurry edge.
@@ -10,7 +11,8 @@
 #Make a directory for all the documents called "Algorithms".
  Get rid of magic numbers in gen_nox.
  Give all the functions doc strings.
- Think about having compartmentalize return the bars.
+#Have compartmentalize return the bars.
+#Change compartmentalize doc-string to reflect that now it returns bars.
 %Figure out what on earth is wrong with the no xis.txt error message when running simulator.py. (SOLUTION changed file structure)
 #Put everything in one folder for now.
 #Explain why I'm using this todo and not using Issues.

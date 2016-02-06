@@ -9,8 +9,11 @@ import numpy as np
 def gen_nox():
     dat = np.random.poisson(900 * np.random.random() + 100,1000) #Note: to be made slightly more "wavy" with extra product.
     comp = compartmentalize(dat)[0]
-    #Working on compartmentalize so that it returns bars, not just splitting positions.
-    plot(dat)
+    for inum, i in enumerate(comp[:-1]):
+        n = comp[inum + 1]
+        plot([i[0], n[0] - 1], [i[1], i[1]], "green")
+        plot([i[0], n[0] - 1], [i[2], i[2]], "red")
+    plot(dat, "blue")
     show()
 
 if __name__=="__main__":
