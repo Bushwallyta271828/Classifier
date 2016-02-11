@@ -1,4 +1,5 @@
  Do whatever is on the NOTE.todo in Algorithms.
+ do up the README
  Allow "blurry edges" for the aperture - i.e. some of the star's photons may be hitting outside the aperture, so give those neighboring pixels SOME weight.
  Write a pdf about how to do the above blurry edges.
  Use a Bayesian approach to finding the probability / weight of the pixels on the blurry edge.

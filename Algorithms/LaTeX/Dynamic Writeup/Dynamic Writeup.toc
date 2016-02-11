@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}Background}{2}
+\contentsline {subsection}{\numberline {1.1}Summary}{2}
+\contentsline {subsection}{\numberline {1.2}Terminology}{2}
+\contentsline {section}{\numberline {2}Concepts}{3}
+\contentsline {subsection}{\numberline {2.1}Existing Methods}{3}
+\contentsline {subsection}{\numberline {2.2}New Ideas}{3}
+\contentsline {section}{\numberline {3}Algorithms}{3}
+\contentsline {subsection}{\numberline {3.1}Dynamic Aperture}{3}
+\contentsline {subsection}{\numberline {3.2}Dynamic Binning}{4}
+\contentsline {section}{\numberline {4}Results}{6}
+\contentsline {subsection}{\numberline {4.1}Statistics}{6}
+\contentsline {subsection}{\numberline {4.2}Figures}{6}
+\contentsline {section}{\numberline {5}Conclusion}{7}
