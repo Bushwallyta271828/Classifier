@@ -13,6 +13,8 @@
  Look up yield for streaming purposes.
  Get rid of magic numbers in gen_nox.
  Give all the functions doc strings.
+ create graph of increase due to Dynamic Binning vs. max length
+ re-write main pdf for Google
 #Have compartmentalize return the bars.
 #Change compartmentalize doc-string to reflect that now it returns bars.
 %Figure out what on earth is wrong with the no xis.txt error message when running simulator.py. (SOLUTION changed file structure)
