@@ -34,7 +34,7 @@ def compartmentalize(lightcurve,
             bins proportionally contributing more weight than smaller bins.
             Since a "badness" metric can be multiplied by a constant to give an 
             equally valid "badness" metric giving the exact same results, and
-            since len(lightcurve) - x = the number of data points we are breaking
+            since len(lightcurve) = the number of data points we are breaking
             up does not depend on the way we break the frames up, we can ignore the
             divided by part of the average and just make our problem the minimization
             of the sum of the standard deviations, weighted by size, of the bins. 
