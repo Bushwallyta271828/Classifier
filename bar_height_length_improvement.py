@@ -3,6 +3,7 @@ from pylab import *
 from numpy import *
 from compartmentalize import compartmentalize
 import sys
+import itertools
 
 BIN_SIZE = 10
 MAX_BIN_LENGTH = 200
@@ -32,7 +33,8 @@ def improvement(length):
     for i in range(N):
         dat = [normal() + 2*sin(j / 25) for j in range(length)]
         comp = compartmentalize(dat, max_length=MAX_BIN_LENGTH, max_pval=2.0/BIN_SIZE)
-        average_length = average([comp[0][i + 1][0] - comp[0][i][0] for i in range(len(comp[0]) - 1)])
+        lengths_list = [[comp[0][i + 1][0] - comp[0][i][0]] * (comp[0][i + 1][0] - comp[0][i][0]) for i in range(len(comp[0]) - 1)]
+        average_length = average(list(itertools.chain(*lengths_list)))
         total_dblocked_badness += sum([(comp[0][i][2] - comp[0][i][1]) * (comp[0][i + 1][0] - comp[0][i][0]) for i in range(len(comp[0]) - 1)])
         rbadness = 0
         for start in range(0, length, average_length):
