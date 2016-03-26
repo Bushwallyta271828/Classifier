@@ -8,21 +8,20 @@ BIN_SIZE = 10
 MAX_BIN_LENGTH = 200
 MAX_SEARCH_LENGTH = 1600
 N = 1000
-f = open("xis.txt")
-flines = f.readlines()
-f.close()
-barmap = [None, None]
-for fline in flines:
-    xi = float(fline[:-1].split(":")[1])
-    barmap.append(xi)
 
 def average(l):
-    return sum(l) / len(l)
+    """
+    computes the average
+    of a list l to the nearest
+    whole number.
+    """
+    return int(round(sum(l) / len(l)))
 
 def improvement(length):
     """
-    This function evaluates the ratio of the badness
-    of regularly blocked data to the badness of 
+    This function evaluates the ratio of the badness (defined
+    in this program as the height of the bar times the length
+    of the bar) of regularly blocked data to the badness of
     dynamically blocked data on randomly generated data
     of given length.
     "rblocked" stands for "regularly blocked"
@@ -33,19 +32,20 @@ def improvement(length):
     for i in range(N):
         dat = [normal() + 2*sin(j / 25) for j in range(length)]
         comp = compartmentalize(dat, max_length=MAX_BIN_LENGTH, max_pval=2.0/BIN_SIZE)
-        average_length = <blah>
-        total_dblocked_badness += comp[1]
+        average_length = average([comp[0][i + 1][0] - comp[0][i][0] for i in range(len(comp[0]) - 1)])
+        total_dblocked_badness += sum([(comp[0][i][2] - comp[0][i][1]) * (comp[0][i + 1][0] - comp[0][i][0]) for i in range(len(comp[0]) - 1)])
         rbadness = 0
         for start in range(0, length, average_length):
-            minimum = float("inf")
-            maximum = float("-inf")
-            for pos in range(start, start + BIN_SIZE):
-                if dat[pos] < minimum:
-                    minimum = dat[pos]
-                if dat[pos] > maximum:
-                    maximum = dat[pos]
-            rbadness += (maximum - minimum) * barmap[BIN_SIZE]
-        total_rblocked_badness += rbadness
+            if start + average_length > length:
+                start = start - average_length
+            else:
+                minimum = float("inf")
+                maximum = float("-inf")
+                for pos in range(start, start + average_length):
+                    minimum = min(minimum, dat[pos])
+                    maximum = max(maximum, dat[pos])
+                rbadness += (maximum - minimum) * average_length
+        total_rblocked_badness += rbadness * length / (start + average_length)
     return total_rblocked_badness / total_dblocked_badness
 
 def main():
@@ -53,7 +53,7 @@ def main():
     This function evaluates improvement
     for various lengths.
     """
-    out = open("fair_improvements_out.txt", "w")
+    out = open("bar_improvements_out.txt", "w")
     out.write("") #Clear the file.
     out.close()
     lengths = []
@@ -63,11 +63,11 @@ def main():
         lengths.append(length)
         improvements.append(imp)
         print length, imp
-        out = open("fair_improvements_out.txt", "a")
+        out = open("bar_improvements_out.txt", "a")
         out.write(str(length) + " " + str(imp) + "\n")
         out.close()
     plot(lengths, improvements)
-    savefig("fair_improvements.png")
+    savefig("bar_improvements.png")
     show()
 
 if __name__=="__main__":
