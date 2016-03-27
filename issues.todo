@@ -15,7 +15,8 @@
  Give all the functions doc strings.
 #create script to create graph of increase due to Dynamic Binning vs. max length
 #run script to create graph of increase due to Dynamic Binning vs. max length
- think about graph with regular = average, not minimum google
+#think about graph of error bar heights and using weighted average bin length, not minimum length google - DONE (see bar_<blah>.py)
+#create graph of error bar heights and using weighted average bin length, not minimum length google
  re-write main pdf for Google (live feed; parallelization)
 #Have compartmentalize return the bars.
 #Change compartmentalize doc-string to reflect that now it returns bars.
